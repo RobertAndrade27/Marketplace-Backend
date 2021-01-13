@@ -4,6 +4,8 @@ const router = express.Router();
 const Petshop = require('../models/petshop')
 const Product = require('../models/product')
 
+const createSplitTransaction = require ('../services/pagarme').createSplitTransaction;
+
 router.get('/petshops', async (req, res) => {
     try {
         const petshops = await Petshop.find();
@@ -25,7 +27,16 @@ router.get('/petshop/:id', async (req, res) => {
     }catch (err) {
         res.json ({ error: true, message: err.message});
     }
-})
+}); 
+
+router.post('/purchase', async (req, res) => {
+    try {
+        const transection = await createSplitTransaction(req.body);
+        res.json(transection);
+    } catch (err) {
+        res.json({ error: true, message: err.message });
+    }
+});
 
 
 module.exports = router;

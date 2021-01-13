@@ -12,4 +12,4 @@ const petshop = new Schema ({
 
 })
 
-module.exports = mongoose.model('Petshop', petshop)
+module.exports = mongoose.model('Petshop', petshop);

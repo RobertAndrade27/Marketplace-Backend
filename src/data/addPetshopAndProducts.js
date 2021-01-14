@@ -13,7 +13,7 @@ const addPetshopsAndProducts = async () => {
             const recipient = await createRecipients(petshop.nome);
 
             if(!recipient.error) {
-                const newPetshop = await new Petshop({...petshop, recipient_id:recipient.data.id }).save();
+                const newPetshop = await new Petshop({...petshop, recipient_id: recipient.data.id }).save();
             await Product.insertMany(
                 petshop.produtos.map(p => ({ ... p, petshop_id: newPetshop._id}))
             );

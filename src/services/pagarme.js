@@ -1,4 +1,4 @@
-const axios = require ('axios')
+const axios = require ('axios');
 
 const api = axios.create({
     baseURL:'https://api.pagar.me/1'
@@ -48,6 +48,22 @@ module.exports = {
 
         } catch (err){
             return { error: true, message: err.message};
+        }
+
+        
+    },
+
+    createSplitTransaction: async () => {
+        try {
+
+            const response = await api.post('/transactions', {
+                api_key,
+                ...data,
+            });
+
+            return {error: false, data: response.data}
+        } catch (err){
+            return {error:true, message:err.message}
         }
     }
 }

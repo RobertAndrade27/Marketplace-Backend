@@ -31,11 +31,12 @@ router.get('/petshop/:id', async (req, res) => {
 
 router.post('/purchase', async (req, res) => {
     try {
-        const transection = await createSplitTransaction(req.body);
-        res.json(transection);
+        const transaction = await createSplitTransaction(req.body);
+        res.json(transaction);
     } catch (err) {
         res.json({ error: true, message: err.message });
     }
+    
 });
 
 

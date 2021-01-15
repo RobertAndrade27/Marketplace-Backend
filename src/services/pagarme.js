@@ -53,7 +53,7 @@ module.exports = {
         
     },
 
-    createSplitTransaction: async () => {
+    createSplitTransaction: async (data) => {
         try {
 
             const response = await api.post('/transactions', {

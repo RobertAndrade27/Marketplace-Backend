@@ -8,5 +8,5 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.set('debug', true);
 
 mongoose
-.connect(URI).then(() => console.log('DB is uo.'))
+.connect(URI).then(() => console.log('DB is coming.'))
 .catch((err) => console.log(err));
